@@ -1,36 +1,47 @@
-class Person {
+define('namespaces/person', [], ()=>{
 
-    name: string;
+    class Person {
 
-    age : number;
+        name: string;
 
-    private email : string;
+        age : number;
 
-    constructor(name : string, age : number) {
+        private email : string;
 
-        this.name = name;
+        constructor(name : string, age : number) {
 
-        this.age = age;
+            this.name = name;
 
-        this.email = this.name + this.age + '@supermail.com';
+            this.age = age;
 
+            this.email = this.name + this.age + '@supermail.com';
+
+        }
+
+        getName () : string {
+
+            return this.name;
+
+        }
+
+        getAge () : number {
+
+            return this.age;
+
+        }
+
+        setAge (name : string) : void {
+
+            this.name = name;
+
+        }
+
+        getEmail () : string {
+            return this.email;
+        }
     }
 
-    getName () : string {
+    return Person
 
-        return this.name;
+});
 
-    }
-
-    getAge () : number {
-
-        return this.age;
-
-    }
-
-    getEmail () : string {
-        return this.email;
-    }
-}
-
-export = Person
