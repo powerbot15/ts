@@ -1,11 +1,26 @@
 
-require(['namespaces/person'], (Person) => {
+define('jquery', [], function () {return jQuery;} );
+
+require([
+    'jquery',
+
+    'namespaces/person',
+
+    'views/person-view'
+], (
+
+    $,
+        Person,
+
+        PersonView
+
+) => {
 
     let person = new Person('New', 25);
 
-    console.log(person.getName());
-    console.log(person.getAge());
-    console.log(person.getEmail());
+    let personView = new PersonView($('[data-person-name]'));
+
+    personView.showPersonName(person.getName());
 
 
 });

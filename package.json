@@ -4,6 +4,7 @@
   "description": "TS sample",
   "main": "app.ts",
   "dependencies": {
+    "jquery": "^3.1.0",
     "requirejs": "^2.2.0"
   },
   "devDependencies": {},
