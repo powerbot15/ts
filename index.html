@@ -6,15 +6,25 @@
 </head>
 <body>
 
-<div>
-    <h2 data-person-name></h2>
-</div>
+<main>
+
+    <h2 data-person-name>Image to string</h2>
+
+    <section data-image-select-area>
+
+        <img src="" alt="Selected Image" data-original-image>
+
+        <input type="file" data-image-file>
+
+        <a href="#" role="button" data-compress-button>Compress</a>
+
+    </section>
+
+</main>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/requirejs/require.js"></script>
-<script src="js/namespaces/person.js"></script>
-<script src="js/views/person-view.js"></script>
-<script src="js/app.js"></script>
+<script src="js/build/build.js"></script>
 
 </body>
 </html>

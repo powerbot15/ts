@@ -2,26 +2,15 @@
 define('jquery', [], function () {return jQuery;} );
 
 require([
-    'jquery',
 
-    'namespaces/person',
+    'controllers/director'
 
-    'views/person-view'
-], (
+], function (
 
-    $,
-        Person,
 
-        PersonView
+) {
 
-) => {
-
-    let person = new Person('New', 25);
-
-    let personView = new PersonView($('[data-person-name]'));
-
-    personView.showPersonName(person.getName());
-
+    console.log('app loaded');
 
 });
 
