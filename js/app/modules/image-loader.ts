@@ -29,7 +29,7 @@ define('modules/image-loader', [], function () {
 
             this.listenEvents();
 
-        };
+        }
 
         initTpl () {
 
@@ -42,13 +42,13 @@ define('modules/image-loader', [], function () {
                 compressBtn : this.$el.find('[data-compress-button]')
             };
 
-        };
+        }
 
         initFileReader () {
 
             this.fileReader = new FileReader();
 
-        };
+        }
 
         listenEvents () {
 

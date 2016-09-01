@@ -14,7 +14,7 @@ define('modules/compressor', [], () => {
 
             this.ctx = this.canvas.getContext('2d');
 
-        };
+        }
 
         imgToCode (img : HTMLImageElement) {
 
