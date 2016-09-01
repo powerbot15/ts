@@ -26,8 +26,8 @@ gulp.task('build-js', function(){
             'js/app/**/*.js',
             'js/app.js'
         ])
-        .pipe(concat('tft_integration_script.js'))
-        .pipe(gulp.dest('web/js'));
+        .pipe(concat('build.js'))
+        .pipe(gulp.dest('js/build'));
 });
 
 gulp.task('watch', function(){
