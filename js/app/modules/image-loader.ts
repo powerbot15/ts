@@ -1,73 +1,80 @@
-define('modules/image-loader', [], function () {
+import {Compressor} from './compressor'
 
-    interface ImageComponentTPL {
+interface ImageComponentTPL {
 
-        originalImg : JQuery;
+    originalImg : JQuery;
 
-        imgFile : JQuery;
+    imgFile : JQuery;
 
-        compressBtn : JQuery;
+    compressBtn : JQuery;
 
-    }
+}
 
+export class ImageLoader{
 
-    class ImageLoader{
+    $el : JQuery;
 
-        $el : JQuery;
+    tpl : ImageComponentTPL;
 
-        tpl : ImageComponentTPL;
+    fileReader : FileReader;
 
-        fileReader : FileReader;
+    compressor : Compressor;
 
-        constructor($el : JQuery){
+    constructor($el : JQuery){
 
-            this.$el = $el;
+        this.$el = $el;
 
-            this.initTpl();
+        this.compressor = new Compressor();
 
-            this.initFileReader();
+        this.initTpl();
 
-            this.listenEvents();
+        this.initFileReader();
 
-        }
-
-        initTpl () {
-
-            this.tpl = {
-
-                originalImg : this.$el.find('[data-original-image]'),
-
-                imgFile : this.$el.find('[data-image-file]'),
-
-                compressBtn : this.$el.find('[data-compress-button]')
-            };
-
-        }
-
-        initFileReader () {
-
-            this.fileReader = new FileReader();
-
-        }
-
-        listenEvents () {
-
-            this.tpl.imgFile.on('change', (e : any) => {
-
-                this.fileReader.readAsDataURL(e.target.files[0]);
-
-            });
-
-            this.fileReader.onloadend = (e) => {
-
-                this.tpl.originalImg.prop('src', this.fileReader.result);
-
-            }
-
-        }
+        this.listenEvents();
 
     }
 
-    return ImageLoader;
+    initTpl () {
 
-});
+        this.tpl = {
+
+            originalImg : this.$el.find('[data-original-image]'),
+
+            imgFile : this.$el.find('[data-image-file]'),
+
+            compressBtn : this.$el.find('[data-compress-button]')
+        };
+
+    }
+
+    initFileReader () {
+
+        this.fileReader = new FileReader();
+
+    }
+
+    listenEvents () {
+
+        this.tpl.imgFile.on('change', (e : any) => {
+
+            this.fileReader.readAsDataURL(e.target.files[0]);
+
+        });
+
+        this.fileReader.onloadend = () => {
+
+            this.tpl.originalImg.prop('src', this.fileReader.result);
+
+        };
+
+        this.tpl.compressBtn.on('click', (e : any) => {
+
+            e.preventDefault();
+
+            this.compressor.imgToCode(this.tpl.originalImg.get(0) as HTMLImageElement);
+
+        })
+
+    }
+
+}
