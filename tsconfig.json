@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "sourceMap": true,
-    "module" : "Amd"
+    "target": "es6",
+    "sourceMap": true
   },
   "exclude": [
     "node_modules"
