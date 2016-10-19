@@ -28,8 +28,8 @@ function rebundle(bundler) {
         .on('error', function(err) { console.error(err); this.emit('end'); })
         .pipe(source('build.js'))
         .pipe(buffer())
-        //.pipe(sourcemaps.init({ loadMaps: true }))
-        //.pipe(sourcemaps.write('./'))
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./js/build'));
 }
 
