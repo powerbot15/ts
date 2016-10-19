@@ -27,7 +27,7 @@ export class Compressor {
 
             console.log(data.length / 4);
 
-            let arrayOfCompressed = [];
+            let arrayOfCompressed : any[] = [];
 
             let colorR = data[0];
             let colorG = data[1];

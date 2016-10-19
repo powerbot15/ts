@@ -4,6 +4,8 @@
   "description": "TS sample",
   "main": "app.ts",
   "dependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.0",
@@ -12,9 +14,15 @@
     "gulp-minify": "0.0.14",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.1.1",
     "gulp-uglifyjs": "^0.6.2",
     "jquery": "^3.1.0",
-    "requirejs": "^2.2.0"
+    "requirejs": "^2.2.0",
+    "tsify": "^2.0.2",
+    "typescript": "^2.0.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
   },
   "devDependencies": {},
   "scripts": {
