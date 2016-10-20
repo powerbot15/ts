@@ -10,7 +10,7 @@ var tsify = require('tsify');
 
 function compile(watch) {
     var bundler = watchify(
-        browserify('./js/app/controllers/director.ts', { debug: true }).plugin(tsify, { noImplicitAny: true }).transform(babel, {presets: ["es2015"]}));
+        browserify('./js/app/controllers/director.ts', { debug: true }).plugin(tsify, { noImplicitAny: true }).transform(babel, {presets: ["es5"]}));
 
     if (watch) {
         bundler.on('update', function() {
