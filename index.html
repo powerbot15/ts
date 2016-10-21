@@ -7,21 +7,19 @@
 </head>
 <body>
 
-<main>
+    <h2 data-person-name>Weather forecast</h2>
 
-    <h2 data-person-name>Image to string</h2>
+    <main data-forecast-area>
+        <div class="search">
+            <label>City : </label><input type="text" data-input-city>
+            <a href="#" data-search>Search</a>
+        </div>
 
-    <section class="image-selection" data-image-select-area>
+        <div>
 
-        <img src="" alt="Selected Image" data-original-image>
+        </div>
+    </main>
 
-        <input type="file" data-image-file>
-
-        <a href="#" role="button" data-compress-button>Compress</a>
-
-    </section>
-
-</main>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="js/build/build.js"></script>

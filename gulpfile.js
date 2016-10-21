@@ -13,17 +13,18 @@ function compile(watch) {
         browserify('./js/app/controllers/director.ts', { debug: true }).plugin(tsify, { noImplicitAny: true }).transform(babel, {presets: ["es5"]}));
 
     if (watch) {
-        bundler.on('update', function() {
-            console.log('-> bundling...');
-            rebundle(bundler);
-            console.log('-> ready');
-        });
+        bundler.on('update', rebundleHandler.bind(bundler));
     }
 
     rebundle(bundler);
 }
 
+function rebundleHandler () {
+    rebundle(this);
+}
+
 function rebundle(bundler) {
+    console.log('-> bundling...');
     bundler.bundle()
         .on('error', function(err) { console.error(err); this.emit('end'); })
         .pipe(source('build.js'))
@@ -31,6 +32,8 @@ function rebundle(bundler) {
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./js/build'));
+
+    console.log('-> ready');
 }
 
 function watch() {

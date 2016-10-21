@@ -1,3 +1,3 @@
-import {ImageLoader} from '../modules/image-loader'
+import {Forecaster} from '../modules/forecaster'
 
-let imageLoader = new ImageLoader($('[data-image-select-area]'));
+let imageLoader = new Forecaster($('[data-forecast-area]'));
