@@ -1,5 +1,7 @@
 import {RequesterService} from '../services/weather-requester'
 
+import {Map} from './map'
+
 interface Tpl {
 
     searchInput : JQuery,
@@ -26,11 +28,13 @@ export class Forecaster {
 
     model : Model;
 
+    map : Map;
+
     constructor ($el : JQuery) {
 
         this.$el = $el;
 
-        this.initTpl().initModel().listenEvents();
+        this.initTpl().initModel().initMap().listenEvents();
 
     }
 
@@ -49,6 +53,11 @@ export class Forecaster {
         this.tpl.foundName.text(serviceResponse.city.name);
 
         this.tpl.foundCountry.text(serviceResponse.city.country);
+
+        this.map.setCenter({
+            lat : serviceResponse.city.coord.lat,
+            lng : serviceResponse.city.coord.lon
+        });
 
     }
 
@@ -104,6 +113,14 @@ export class Forecaster {
 
 
         });
+
+        return this;
+
+    }
+
+    private initMap () : Forecaster{
+
+        this.map = new Map(this.$el.find('[data-map]').get(0));
 
         return this;
 
