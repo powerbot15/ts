@@ -1,6 +1,8 @@
 interface Template {
 
-    weatherIcon : JQuery
+    weatherIcon : JQuery,
+
+    weatherDesc : JQuery
 
 }
 
@@ -27,7 +29,11 @@ export class WeatherCard {
     initTpl () : WeatherCard {
 
         this.tpl = {
-            weatherIcon : this.$el.find('[data-icon]')
+
+            weatherIcon : this.$el.find('[data-icon]'),
+
+            weatherDesc : this.$el.find('[data-description]')
+
         };
 
         return this;
@@ -38,9 +44,13 @@ export class WeatherCard {
 
         let iconType = this.model.weather[0].icon;
 
+        let description = this.model.weather[0].description;
+
         let url = `http://openweathermap.org/img/w/${iconType}.png`;
 
         this.tpl.weatherIcon.prop('src', url);
+
+        this.tpl.weatherDesc.text(description);
 
     }
 
