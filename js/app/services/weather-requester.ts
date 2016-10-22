@@ -6,8 +6,11 @@ let RequesterService = {
 
         .done((response)=>{
 
-            callback.call(context, response);
+            callback.call(context, null, response);
 
+        })
+        .fail((error) => {
+            callback.call(context, error, null);
         });
 
     }

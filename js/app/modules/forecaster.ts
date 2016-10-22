@@ -4,7 +4,17 @@ interface Tpl {
 
     searchInput : JQuery,
 
-    searchButton : JQuery
+    searchButton : JQuery,
+
+    foundName : JQuery,
+
+    foundCountry : JQuery
+
+}
+
+interface Model {
+
+    cityName : string
 
 }
 
@@ -14,19 +24,31 @@ export class Forecaster {
 
     tpl : Tpl;
 
+    model : Model;
+
     constructor ($el : JQuery) {
 
         this.$el = $el;
 
-        this.initTpl();
-
-        this.listenEvents();
+        this.initTpl().initModel().listenEvents();
 
     }
 
-    renderForecast (serviceResponse : any) {
+    renderForecast (error : any, serviceResponse : any) {
 
-        console.dir(serviceResponse)
+        console.dir(serviceResponse);
+
+        if(error){
+
+            alert(error.statusText);
+
+            return;
+
+        }
+
+        this.tpl.foundName.text(serviceResponse.city.name);
+
+        this.tpl.foundCountry.text(serviceResponse.city.country);
 
     }
 
@@ -36,7 +58,23 @@ export class Forecaster {
 
             searchInput : this.$el.find('[data-input-city]'),
 
-            searchButton : this.$el.find('[data-search]')
+            searchButton : this.$el.find('[data-search]'),
+
+            foundName : this.$el.find('[data-city-name]'),
+
+            foundCountry : this.$el.find('[data-city-country]')
+
+        };
+
+        return this;
+
+    }
+
+    private initModel () : Forecaster {
+
+        this.model = {
+
+            cityName : ''
 
         };
 
@@ -50,7 +88,20 @@ export class Forecaster {
 
             e.preventDefault();
 
-            RequesterService.getWeather(this.tpl.searchInput.val(), this.renderForecast, this);
+            this.model.cityName = this.tpl.searchInput.val();
+
+            if(this.model.cityName.trim().length){
+
+                RequesterService.getWeather(this.model.cityName, this.renderForecast, this);
+
+            }
+            else{
+
+                alert('Empty city value!');
+
+                console.log('test');
+            }
+
 
         });
 

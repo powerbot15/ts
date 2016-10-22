@@ -2,23 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/main.min.css">
+    <!--<link rel="stylesheet" href="css/main.min.css">-->
     <title>TS</title>
 </head>
-<body>
+<body data-forecast-area>
 
-    <h2 data-person-name>Weather forecast</h2>
+    <h1>Weather forecast</h1>
 
-    <main data-forecast-area>
-        <div class="search">
-            <label>City : </label><input type="text" data-input-city>
-            <a href="#" data-search>Search</a>
-        </div>
+    <div class="search">
+        <label>City : </label><input type="text" data-input-city>
+        <a href="#" data-search>Search</a>
+    </div>
 
-        <div>
+    <div>
+        <header>
+            <strong data-city-name></strong>&nbsp;<strong data-city-country></strong>
+        </header>
 
-        </div>
-    </main>
+        <ul data-forecasts>
+            <li>
+
+            </li>
+        </ul>
+
+    </div>
 
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
