@@ -2,7 +2,7 @@ let RequesterService = {
 
     getWeather : function (cityName : string, callback : Function, context : any) {
 
-        $.get(`//api.openweathermap.org/data/2.5/forecast?q=${cityName},&APPID=b595a500daacfaa71158e3af1ff44f08&mode=json`)
+        $.get(`//api.openweathermap.org/data/2.5/forecast?q=${cityName},&APPID=b595a500daacfaa71158e3af1ff44f08&units=metric&mode=json`)
 
         .done((response)=>{
 

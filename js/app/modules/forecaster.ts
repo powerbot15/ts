@@ -1,5 +1,7 @@
 import {RequesterService} from '../services/weather-requester'
 
+import {CardList} from './card-list'
+
 import {Map} from './map'
 
 interface Tpl {
@@ -30,11 +32,13 @@ export class Forecaster {
 
     map : Map;
 
+    cardList : CardList;
+
     constructor ($el : JQuery) {
 
         this.$el = $el;
 
-        this.initTpl().initModel().initMap().listenEvents();
+        this.initTpl().initModel().initMap().initCardList().listenEvents();
 
     }
 
@@ -58,6 +62,8 @@ export class Forecaster {
             lat : serviceResponse.city.coord.lat,
             lng : serviceResponse.city.coord.lon
         });
+
+        this.cardList.buildList(serviceResponse.list);
 
     }
 
@@ -86,6 +92,14 @@ export class Forecaster {
             cityName : ''
 
         };
+
+        return this;
+
+    }
+
+    private initCardList () : Forecaster {
+
+        this.cardList = new CardList(this.$el.find('[data-forecasts]'));
 
         return this;
 
