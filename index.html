@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--<link rel="stylesheet" href="css/main.min.css">-->
+    <link rel="stylesheet" href="css/main.min.css">
     <title>TS</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6OJ2UWvgxlIS4XW3jrR4Y7ErBKF3TOFM"
             type="text/javascript"></script>
@@ -21,10 +21,13 @@
             <strong data-city-name></strong>&nbsp;<strong data-city-country></strong>
         </header>
         <div style="width:400px; height : 250px;" data-map></div>
-        <ul data-forecasts>
-            <li>
+        <ul class="weather" data-forecasts>
+            <li class="weather-card">
+                <h3 data-date></h3>
                 <img src="#" alt="weather icon" data-icon>
                 <p data-description></p>
+                <p data-temperature></p>
+                <p data-wind-speed></p>
             </li>
         </ul>
 

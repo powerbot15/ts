@@ -111,24 +111,39 @@ export class Forecaster {
 
             e.preventDefault();
 
-            this.model.cityName = this.tpl.searchInput.val();
+            this.startSearch();
 
-            if(this.model.cityName.trim().length){
+        });
 
-                RequesterService.getWeather(this.model.cityName, this.renderForecast, this);
+        this.tpl.searchInput.on('keyup', (e : JQueryEventObject) => {
+
+            if(e.keyCode == 13){
+
+                this.startSearch();
 
             }
-            else{
-
-                alert('Empty city value!');
-
-                console.log('test');
-            }
-
 
         });
 
         return this;
+
+    }
+
+    private startSearch () {
+
+        this.model.cityName = this.tpl.searchInput.val();
+
+        if(this.model.cityName.trim().length){
+
+            RequesterService.getWeather(this.model.cityName, this.renderForecast, this);
+
+        }
+        else{
+
+            alert('Empty city value!');
+
+            console.log('test');
+        }
 
     }
 

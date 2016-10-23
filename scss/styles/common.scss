@@ -4,3 +4,14 @@
     max-height: 200px;
   }
 }
+
+.weather {
+  .weather-card{
+    display : inline-block;
+    width:150px;
+    height: 250px;
+    padding : 15px;
+    text-align: center;
+    margin : 15px;
+  }
+}

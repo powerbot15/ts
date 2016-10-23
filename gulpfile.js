@@ -7,6 +7,11 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var babel = require('babelify');
 var tsify = require('tsify');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var cssmin = require('gulp-cssmin');
+var rename = require('gulp-rename');
+var concatCss = require('gulp-concat-css');
 
 function compile(watch) {
     var bundler = watchify(
@@ -40,7 +45,20 @@ function watch() {
     return compile(true);
 }
 
+gulp.task('build-css', function() {
+    return gulp.src('./scss/**/*.scss')
+        .pipe(sass.sync().on('error', sass.logError))
+        .pipe(concatCss('main.min.css'))
+        .pipe(autoprefixer())
+        .pipe(cssmin())
+        .pipe(gulp.dest('./css'));
+});
+
+gulp.task('watch-css', function(){
+    gulp.watch('scss/**/*.scss', ['build-css']);
+});
+
 gulp.task('build', function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['watch', 'watch-css']);
