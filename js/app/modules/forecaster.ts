@@ -147,11 +147,29 @@ export class Forecaster {
 
     }
 
+    private startCoordinateSearch (latLng : any) {
+
+        RequesterService.getWeatherByCoords(latLng, this.renderForecast, this);
+
+    }
+
     private initMap () : Forecaster{
 
         this.map = new Map(this.$el.find('[data-map]').get(0));
 
+        this.map.initClickHandler(this.mapClick.bind(this));
+
         return this;
+
+    }
+
+    private mapClick (e : any) {
+
+        this.startCoordinateSearch({
+            lat : e.latLng.lat(),
+            lng : e.latLng.lng()
+        });
+
 
     }
 

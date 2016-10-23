@@ -53,4 +53,10 @@ export class Map {
 
     }
 
+    initClickHandler (callback : Function) {
+
+        this.map.addListener('click', callback);
+
+    }
+
 }

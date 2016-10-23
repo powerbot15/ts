@@ -26,8 +26,6 @@ export class WeatherCard {
 
         this.model = cardData;
 
-        console.dir(this.model);
-
         this.initTpl();
 
         this.render();
