@@ -1,3 +1,7 @@
+body{
+  color: #555555;
+  min-width:1080px;
+}
 h1, h2{
   padding: 20px 0;
   text-align: center;
@@ -24,7 +28,7 @@ h1, h2{
   .map{
     margin: 20px auto 0 auto;
     width: 500px;
-    height: 300px;
+    height: 500px;
   }
 }
 .image-selection{
@@ -35,7 +39,7 @@ h1, h2{
 }
 
 .weather {
-  max-height:450px;
+  max-height:530px;
   overflow-y: auto;
 
   .weather-card{
@@ -47,5 +51,11 @@ h1, h2{
     margin : 15px;
     border-radius : 5px;
     border: 1px solid #ABABAB;
+
+    p{
+      margin:5px 0;
+      font-size : 14px;
+      font-weight: 600;
+    }
   }
 }
