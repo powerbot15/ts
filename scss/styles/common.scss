@@ -10,8 +10,15 @@ h1, h2{
   display: inline-block;
   vertical-align: top;
   width: calc(50% - 4px);
+  height: 550px;
   border: 1px solid #FAFAFA;
   text-align: center;
+}
+.forecast{
+  header{
+    font-size: 18px;
+    color: #44BB00;
+  }
 }
 .search{
   .search-wrap{
@@ -31,13 +38,6 @@ h1, h2{
     height: 500px;
   }
 }
-.image-selection{
-  img{
-    max-width: 200px;
-    max-height: 200px;
-  }
-}
-
 .weather {
   max-height:530px;
   overflow-y: auto;
@@ -52,6 +52,10 @@ h1, h2{
     border-radius : 5px;
     border: 1px solid #ABABAB;
 
+    img{
+      width: 80px;
+      height: 80px;
+    }
     p{
       margin:5px 0;
       font-size : 14px;
