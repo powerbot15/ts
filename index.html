@@ -11,16 +11,19 @@
 
     <h1>Weather forecast</h1>
 
-    <div class="search">
-        <label>City : </label><input type="text" data-input-city>
-        <a href="#" data-search>Search</a>
+    <div class="panel search">
+        <div class="search-wrap">
+            <label>City name : </label><input type="text" data-input-city>
+            <a href="#" data-search>Search</a>
+        </div>
+        <div class="map" data-map></div>
     </div>
 
-    <div>
+    <div class="panel forecast">
         <header>
             <strong data-city-name></strong>&nbsp;<strong data-city-country></strong>
         </header>
-        <div style="width:400px; height : 250px;" data-map></div>
+
         <ul class="weather" data-forecasts>
             <li class="weather-card">
                 <h3 data-date></h3>

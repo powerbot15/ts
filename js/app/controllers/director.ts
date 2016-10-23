@@ -1,5 +1,5 @@
 import {Forecaster} from '../modules/forecaster'
 
-let imageLoader = new Forecaster($('[data-forecast-area]'));
+let forecaster = new Forecaster($('[data-forecast-area]'));
 
 
